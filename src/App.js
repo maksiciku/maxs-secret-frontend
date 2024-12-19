@@ -1,42 +1,45 @@
 import React from 'react';
-import { Container, CssBaseline, Box } from '@mui/material';
+import { Container, Typography, Box, CircularProgress } from '@mui/material';
 import MarketData from './components/MarketData';
-import Prediction from './components/Prediction';
-import Accuracy from './components/Accuracy';
 import TrendChart from './components/TrendChart';
 import Portfolio from './components/Portfolio';
 
-function App() {
+const App = () => {
     return (
-        <Container maxWidth="md" style={{ marginTop: '20px', fontFamily: 'Arial, sans-serif' }}>
-            <CssBaseline />
-            <Box
-                style={{
-                    backgroundColor: '#f5f5f5',
-                    padding: '20px',
-                    borderRadius: '8px',
-                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-                }}
-            >
-                <h1 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>
-                    Max's Secret
-                </h1>
+        <Container maxWidth="md" style={{ backgroundColor: '#1a1a1a', color: '#fff', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
+            <Typography variant="h3" align="center" gutterBottom style={{ color: '#FFD700', fontWeight: 'bold' }}>
+                Max's Secret
+            </Typography>
+            <Typography variant="subtitle1" align="center" gutterBottom style={{ color: '#aaa' }}>
+                Your personalized crypto tracker and prediction tool
+            </Typography>
+
+            <Box style={{ marginTop: '20px' }}>
+                <Typography variant="h4" gutterBottom>
+                    Market Data
+                </Typography>
                 <MarketData />
-                <Box style={{ marginTop: '30px' }}>
-                    <TrendChart />
-                </Box>
-                <Box style={{ marginTop: '30px' }}>
-                    <Portfolio />
-                </Box>
-                <Box style={{ marginTop: '30px' }}>
-                    <Prediction />
-                </Box>
-                <Box style={{ marginTop: '30px' }}>
-                    <Accuracy />
-                </Box>
+            </Box>
+
+            <Box style={{ marginTop: '40px' }}>
+                <Typography variant="h4" gutterBottom>
+                    Cryptocurrency Trend
+                </Typography>
+                <TrendChart />
+            </Box>
+
+            <Box style={{ marginTop: '40px' }}>
+                <Typography variant="h4" gutterBottom>
+                    Portfolio Tracker
+                </Typography>
+                <Portfolio />
+            </Box>
+
+            <Box style={{ marginTop: '40px', textAlign: 'center' }}>
+                <CircularProgress style={{ color: '#FFD700' }} />
             </Box>
         </Container>
     );
-}
+};
 
 export default App;
