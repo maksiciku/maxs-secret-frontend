@@ -11,7 +11,7 @@ const MarketData = () => {
             try {
                 console.log('Fetching market data for:', symbol);
                 const response = await axios.get(
-                    `http://localhost:5000/api/market-data?symbol=${symbol}`
+                    `https://maxs-secret-backend.vercel.app/api/market-data?symbol=${symbol}`
                 );
                 console.log('Market data fetched:', response.data);
 

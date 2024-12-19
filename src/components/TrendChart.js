@@ -10,10 +10,11 @@ const TrendChart = () => {
     const [prices, setPrices] = useState([]);
     const [timestamps, setTimestamps] = useState([]);
 
-    const { lastMessage } = useWebSocket('ws://localhost:5001', {
+    // Connect to the deployed WebSocket server
+    const { lastMessage } = useWebSocket('wss://maxs-secret-backend.vercel.app', {
         onOpen: () => console.log('WebSocket connected'),
         onClose: () => console.log('WebSocket disconnected'),
-        shouldReconnect: () => true, // Reconnect automatically
+        shouldReconnect: () => true, // Auto-reconnect on disconnect
     });
 
     // Update prices and timestamps from WebSocket messages
@@ -21,7 +22,7 @@ const TrendChart = () => {
         if (lastMessage !== null) {
             try {
                 const marketData = JSON.parse(lastMessage.data);
-                const price = marketData[symbol]?.usd;
+                const price = marketData.marketData?.[symbol]?.usd;
 
                 if (price) {
                     setPrices((prevPrices) => {
@@ -43,7 +44,7 @@ const TrendChart = () => {
         }
     }, [lastMessage, symbol]);
 
-    // Update chart data whenever prices or symbol change
+    // Update chart data whenever prices or timestamps change
     useEffect(() => {
         if (prices.length > 0 && timestamps.length > 0) {
             setChartData({

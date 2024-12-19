@@ -9,7 +9,7 @@ const Accuracy = () => {
     useEffect(() => {
         const fetchAccuracy = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/accuracy`);
+                const response = await axios.get(`https://maxs-secret-backend.vercel.app/api/accuracy`);
                 const { weeklyAccuracy, historicalData } = response.data;
 
                 // Prepare chart data

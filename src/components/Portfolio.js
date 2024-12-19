@@ -19,7 +19,7 @@ const Portfolio = () => {
         const fetchPortfolioData = async () => {
             try {
                 const symbols = selectedCryptos.join(',');
-                const response = await axios.get(`http://localhost:5000/api/portfolio?symbols=${symbols}`);
+                const response = await axios.get(`https://maxs-secret-backend.vercel.app/api/portfolio?symbols=${symbols}`);
                 const { data } = response.data;
 
                 // Calculate total portfolio value based on quantities

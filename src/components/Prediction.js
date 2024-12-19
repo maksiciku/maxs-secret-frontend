@@ -10,7 +10,7 @@ const Prediction = () => {
     useEffect(() => {
         const fetchPrediction = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/predict?symbol=bitcoin');
+                const response = await axios.get('https://maxs-secret-backend.vercel.app/api/predict?symbol=bitcoin');
                 const { prediction, rationale } = response.data; // Removed shortTermMA & longTermMA
                 setPrediction(prediction);
                 setRationale(rationale);
